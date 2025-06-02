@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QPushButton, QMessageBox
 from matlab_backend import run_matlab_slicer
 
 
@@ -39,6 +40,11 @@ class Ui_MainWindow(object):
         value = self.outputFile_lineEdit.text()
         self.print_settings.append(value)
         print("outputFile:", value)
+
+    def setup_slice_button(self):
+        self.slice_button = QtWidgets.QPushButton("Slice", self.formLayoutWidget)
+        self.slice_button.setObjectName("slice_button")
+
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -165,6 +171,15 @@ class Ui_MainWindow(object):
         # add QLineEdit to layout
         self.formLayout.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.outputFile_lineEdit)
         # -----------------------------------------------------------------------------------------
+
+        # Slice Button ----------------------------------------------------------------------------
+        # Create the QPushButton
+        self.slice_button = QtWidgets.QPushButton("Slice", self.formLayoutWidget)
+        self.slice_button.setObjectName("slice_button")
+        # Add it to the layout
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.slice_button)
+        # -----------------------------------------------------------------------------------------
+
 
 
         self.sliceSettings_tabWidget.addTab(self.slice_parameters_tab, "")
