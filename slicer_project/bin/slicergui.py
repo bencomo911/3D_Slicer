@@ -41,9 +41,30 @@ class Ui_MainWindow(object):
         self.print_settings.append(value)
         print("outputFile:", value)
 
-    def setup_slice_button(self):
-        self.slice_button = QtWidgets.QPushButton("Slice", self.formLayoutWidget)
-        self.slice_button.setObjectName("slice_button")
+    def slice_model(self):
+    #     self.slice_button = QtWidgets.QPushButton("Slice", self.formLayoutWidget)
+    #     self.slice_button.setObjectName("slice_button")
+        layer_height = self.layerHeight_spinbox.value()
+        shell_thickness = self.shellThickness_spinbox.value()
+        infill_density = self.infillDensity_spinbox.value()
+        print_speed = self.printSpeed_spinbox.value()
+        input_file = self.inputfile_lineEdit.text()
+        output_file = self.outputFile_lineEdit.text()
+
+        # Call MATLAB backend
+        try:
+            run_matlab_slicer(
+                layer_height=layer_height,
+                shell_thickness=shell_thickness,
+                infill_density=infill_density,
+                print_speed=print_speed,
+                input_stl=input_file,
+                output_gcode=output_file
+            )
+            QtWidgets.QMessageBox.information(None, "Success", "Slicing Completed Successfuly.")
+        except Exception as e:
+            QtWidgets.QMessageBox.critical(None, "Error", f"An error occurred: {e}")
+
 
     
     def setupUi(self, MainWindow):
@@ -78,6 +99,8 @@ class Ui_MainWindow(object):
         self.layerHeight_spinbox.valueChanged.connect(self.get_layerHeight)
         # create spinbox object variable
         self.layerHeight_spinbox.setObjectName("layerHeight_spinbox")
+        # Limit value for layer height to 3 decimals
+        self.layerHeight_spinbox.setDecimals(3)
         # add spinbox to layout
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.layerHeight_spinbox)
         # -----------------------------------------------------------------------------------------
@@ -98,6 +121,8 @@ class Ui_MainWindow(object):
         self.shellThickness_spinbox.valueChanged.connect(self.get_shellThickness)
         # create spinbox object variable
         self.shellThickness_spinbox.setObjectName("shellThickness_spinbox")
+        # Limit value for shell thickness to 3 decimals
+        self.shellThickness_spinbox.setDecimals(3)
         # add spinbox to layout
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.shellThickness_spinbox)
         # -----------------------------------------------------------------------------------------
@@ -116,6 +141,10 @@ class Ui_MainWindow(object):
         self.infillDensity_spinbox.valueChanged.connect(self.get_infillDensity)
         # create spinbox object variable
         self.infillDensity_spinbox.setObjectName("infillDensity_spinbox")
+        # Add range for infill density -----------
+        self.infillDensity_spinbox.setMinimum(0)
+        self.infillDensity_spinbox.setMaximum(100)
+        # ----------------------------------------
         # add spinbox to layout
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.infillDensity_spinbox)
         # -----------------------------------------------------------------------------------------
@@ -134,6 +163,10 @@ class Ui_MainWindow(object):
         self.printSpeed_spinbox.valueChanged.connect(self.get_printSpeed)
         # create spinbox object variable
         self.printSpeed_spinbox.setObjectName("printSpeed_spinbox")
+        # Add range for print speed -----------
+        self.printSpeed_spinbox.setMinimum(1)
+        self.printSpeed_spinbox.setMaximum(100)
+        #--------------------------------------
         # add spinbox to layout
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.printSpeed_spinbox)
         # -----------------------------------------------------------------------------------------
@@ -176,6 +209,7 @@ class Ui_MainWindow(object):
         # Create the QPushButton
         self.slice_button = QtWidgets.QPushButton("Slice", self.formLayoutWidget)
         self.slice_button.setObjectName("slice_button")
+        self.slice_button.clicked.connect(self.slice_model)
         # Add it to the layout
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.slice_button)
         # -----------------------------------------------------------------------------------------

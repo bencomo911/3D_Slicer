@@ -1,10 +1,10 @@
-import matlab.engine
+# import matlab.engine
 
-def run_matlab_slicer(input_stl, output_gcode, layer_height, shell_thickness, infill_density, print_speed):
+def run_matlab_slicer(layer_height, shell_thickness, infill_density, print_speed, input_stl, output_gcode):
     '''
     Interface for calling MATLAB backend slicer. 
     '''
-    eng = matlab.engine.start_matlab()
+    # eng = matlab.engine.start_matlab()
 
     try:
         # Create MATLAB expected inputs as a string
@@ -22,14 +22,15 @@ def run_matlab_slicer(input_stl, output_gcode, layer_height, shell_thickness, in
         print(matlab_command)
 
         # Execute the MATLAB command block
-        eng.eval(matlab_command, nargout=0)
+        # eng.eval(matlab_command, nargout=0)
     
-    except matlab.engine.MatlabExecutionError as e:
-        print("MATLAB runtime error:", e)
+    # except matlab.engine.MatlabExecutionError as e:
+        # print("MATLAB runtime error:", e)
 
     finally:
         # Close MATLAB engine, regardless of errors
-        eng.quit()
+        # eng.quit()
+        print("API call ended")
 
     # ----- Original implementation for reference -----
     # MATLAB integration required MATLAB and MATLAB Engine 
