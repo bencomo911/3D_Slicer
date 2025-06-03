@@ -17,23 +17,6 @@ MATLAB backend link: [here](https://github.com/wjk199511140034/AMebius-slicer/bl
 * API error handling and parameter validation.
 
 ## Project Structure
-slicer_project/
-│
-├── backend/
-│   ├── \__init\__.py
-│   └── matlab_backend.py           # Handles MATLAB engine calls and backend logic
-│
-├── gui/
-│   ├── \__init__\.py
-│   └── slicergui.py                # PyQt5 GUI definition and logic
-│
-├── bin/
-│   ├── __init__.py
-│   └── main.py                    # Entry point launching the GUI application
-│
-├── __init__.py                   # Package initializer for slicer_project
-├── requirements.txt              # Python dependencies
-├── .gitignore                    # Git ignore rules (including pycache, .venv, IDE folders)
-└── README.md                     # This file
+<pre> slicer_project/ ├── backend/ │ ├── <code>__init__.py</code> │ └── matlab_backend.py # Handles MATLAB engine calls and backend logic ├── gui/ │ ├── <code>__init__.py</code> │ └── slicergui.py # PyQt5 GUI definition and logic ├── bin/ │ ├── <code>__init__.py</code> │ └── main.py # Entry point launching the GUI application ├── <code>__init__.py</code> # Package initializer for slicer_project ├── requirements.txt # Python dependencies ├── .gitignore # Git ignore rules (pycache, .venv, IDE folders) └── README.md # Project overview and documentatio
 
 
