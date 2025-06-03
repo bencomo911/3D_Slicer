@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QPushButton, QMessageBox
-from matlab_backend import run_matlab_slicer
+from slicer_project.backend.matlab_backend import run_matlab_slicer
 
 
 class Ui_MainWindow(object):
@@ -245,7 +245,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(680, 460, 111, 61))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("slicer_project/bin/logos/keck_logo.png"))
+        self.label.setPixmap(QtGui.QPixmap("slicer_project/gui/resources/logos/keck_logo.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -267,12 +267,12 @@ class Ui_MainWindow(object):
         self.actionNew.setObjectName("actionNew")
         self.actionprinterProfile_icon = QtWidgets.QAction(MainWindow)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("slicer_project/bin/logos/printer_logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("slicer_project/gui/resources/logos/printer_logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionprinterProfile_icon.setIcon(icon)
         self.actionprinterProfile_icon.setObjectName("actionprinterProfile_icon")
         self.actionnewFile_Icon = QtWidgets.QAction(MainWindow)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("slicer_project/bin/logos/newFile_Icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("slicer_project/gui/resources/logos/newFile_Icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionnewFile_Icon.setIcon(icon1)
         self.actionnewFile_Icon.setObjectName("actionnewFile_Icon")
         self.menuPrinter_Profile.addAction(self.actionEdit)
@@ -306,8 +306,7 @@ class Ui_MainWindow(object):
         self.actionprinterProfile_icon.setText(_translate("MainWindow", "printerProfile_icon"))
         self.actionnewFile_Icon.setText(_translate("MainWindow", "newFile_Icon"))
 
-
-if __name__ == "__main__":
+def launch_gui():
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
@@ -315,3 +314,9 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    launch_gui()
+
+
+
