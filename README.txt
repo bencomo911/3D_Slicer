@@ -1,6 +1,5 @@
-Duplicating environment: 
-    - pull from github repo:
-    - create virtual environment in own machine:
-        python3 -m venv virtualEnv_name
-    - install project dependencies:
-        pip install -r requirements.txt
+# 3D_Slicer
+The 3D Slicer Application is a proprietary software for the W.M. Keck Center for 3D Innovation. It combines a Python Qt frontend with a MATLAB backend to generate G-code from STL files primarily for 3D printing workflows. 
+
+## Project Overview
+3D Slicer is a desktop application that follows conventional slicing software workflows: it slices 3D models (STL files) into layers and generates G-code for 3D printers to process.The goal of developing this proprietary software is to test the newly researched infills in the lab. The GUI is built with PyQt5 providing user friendly controls for slicing customizations such as layer height, shell thickness, infill density, print speed, and infill type. The slicing computations are performed by a MATLAB backend script (main.m) accessed through the MATLAB Engine API for Python. 
