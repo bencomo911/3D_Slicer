@@ -28,10 +28,11 @@ slicer_project/
 │   └── slicergui.py            # PyQt5 GUI definition and logic
 ├── bin/
 │   ├── __init__.py
-│   └── main.py                 # Entry point to launch the application
-├── __init__.py                 # Marks slicer_project as a package
-README.md                       # Project documentation
-requirements.txt                # Python dependencies
+│   └── main.py                 # Entry point launching the GUI application
+├── __init__.py                 # Package initializer for slicer_project
+├── requirements.txt            # Python dependencies
+├── .gitignore                  # Git ignore rules (pycache, .venv, IDE folders)
+└── README.md   
 ```
 
 
