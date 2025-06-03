@@ -42,8 +42,6 @@ class Ui_MainWindow(object):
         print("outputFile:", value)
 
     def slice_model(self):
-    #     self.slice_button = QtWidgets.QPushButton("Slice", self.formLayoutWidget)
-    #     self.slice_button.setObjectName("slice_button")
         layer_height = self.layerHeight_spinbox.value()
         shell_thickness = self.shellThickness_spinbox.value()
         infill_density = self.infillDensity_spinbox.value()
