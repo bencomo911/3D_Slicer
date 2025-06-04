@@ -14,4 +14,4 @@ venv/
 .DS_Store
 
 # Ignore test file
-slicer_project/gui/gui_mess
+slicer_project/gui/gui_mess.py

@@ -13,7 +13,7 @@ def window():
     wid_label.setText("Hello world!") # set text
     wid.setGeometry(0,0,200,50) # set position of main window (app) relative to user's screen
     wid_label.move(50,20) # set position of the widget label relative to the right corner of the app
-    wid.setWindowTitle("Pyqt5")
+    wid.setWindowTitle("Pyqt52")
     wid.show()
     sys.exit(app.exec_())
 
