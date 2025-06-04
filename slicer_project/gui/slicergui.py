@@ -5,41 +5,41 @@ from slicer_project.backend.matlab_backend import run_matlab_slicer
 
 class Ui_MainWindow(object):
     # print settings
-    print_settings = []
+    # print_settings = []
     
-    # Action function
-    def get_layerHeight(self):
-        # get current value
-        value = self.layerHeight_spinbox.value()
-        # add layerHeight to settings list 
-        self.print_settings.append(value)
-        print("layerHeight:", value)
+    # # Action function
+    # def get_layerHeight(self):
+    #     # get current value
+    #     value = self.layerHeight_spinbox.value()
+    #     # add layerHeight to settings list 
+    #     self.print_settings.append(value)
+    #     print("layerHeight:", value)
         
-    def get_shellThickness(self):
-        # get current value
-        value = self.shellThickness_spinbox.value()
-        self.print_settings.append(value)
-        print("shellThickness:", value)
+    # def get_shellThickness(self):
+    #     # get current value
+    #     value = self.shellThickness_spinbox.value()
+    #     self.print_settings.append(value)
+    #     print("shellThickness:", value)
         
-    def get_infillDensity(self):
-        value = self.infillDensity_spinbox.value()
-        self.print_settings.append(value)
-        print("infillDensity:", value)
+    # def get_infillDensity(self):
+    #     value = self.infillDensity_spinbox.value()
+    #     self.print_settings.append(value)
+    #     print("infillDensity:", value)
         
-    def get_printSpeed(self):
-        value = self.printSpeed_spinbox.value()
-        self.print_settings.append(value)
-        print("printSpeed:", value)
+    # def get_printSpeed(self):
+    #     value = self.printSpeed_spinbox.value()
+    #     self.print_settings.append(value)
+    #     print("printSpeed:", value)
         
-    def set_inputFile(self):
-        value = self.inputfile_lineEdit.text()
-        self.print_settings.append(value)
-        print("inputFile:", value)
+    # def set_inputFile(self):
+    #     value = self.inputfile_lineEdit.text()
+    #     self.print_settings.append(value)
+    #     print("inputFile:", value)
         
-    def set_outputFile(self):
-        value = self.outputFile_lineEdit.text()
-        self.print_settings.append(value)
-        print("outputFile:", value)
+    # def set_outputFile(self):
+    #     value = self.outputFile_lineEdit.text()
+    #     self.print_settings.append(value)
+    #     print("outputFile:", value)
 
     def slice_model(self):
         layer_height = self.layerHeight_spinbox.value()
@@ -60,6 +60,7 @@ class Ui_MainWindow(object):
                 output_gcode=output_file
             )
             QtWidgets.QMessageBox.information(None, "Success", "Slicing Completed Successfuly.")
+            print()
         except Exception as e:
             QtWidgets.QMessageBox.critical(None, "Error", f"An error occurred: {e}")
 
@@ -94,7 +95,7 @@ class Ui_MainWindow(object):
             suffix=" (mm)",
             singleStep=0.1)
         # add action to spinbox
-        self.layerHeight_spinbox.valueChanged.connect(self.get_layerHeight)
+        # self.layerHeight_spinbox.valueChanged.connect(self.get_layerHeight)
         # create spinbox object variable
         self.layerHeight_spinbox.setObjectName("layerHeight_spinbox")
         # Limit value for layer height to 3 decimals
@@ -116,7 +117,7 @@ class Ui_MainWindow(object):
             suffix=" (mm)", 
             singleStep=0.1)
         # add action to spinbox
-        self.shellThickness_spinbox.valueChanged.connect(self.get_shellThickness)
+        # self.shellThickness_spinbox.valueChanged.connect(self.get_shellThickness)
         # create spinbox object variable
         self.shellThickness_spinbox.setObjectName("shellThickness_spinbox")
         # Limit value for shell thickness to 3 decimals
@@ -136,7 +137,7 @@ class Ui_MainWindow(object):
         self.infillDensity_spinbox = QtWidgets.QSpinBox(self.formLayoutWidget,
             suffix= " (0-100%)")
         # add action to spinbox
-        self.infillDensity_spinbox.valueChanged.connect(self.get_infillDensity)
+        # self.infillDensity_spinbox.valueChanged.connect(self.get_infillDensity)
         # create spinbox object variable
         self.infillDensity_spinbox.setObjectName("infillDensity_spinbox")
         # Add range for infill density -----------
@@ -158,7 +159,7 @@ class Ui_MainWindow(object):
         self.printSpeed_spinbox = QtWidgets.QSpinBox(self.formLayoutWidget, 
             suffix=" (mm/s)")
         # add action to spinbox
-        self.printSpeed_spinbox.valueChanged.connect(self.get_printSpeed)
+        # self.printSpeed_spinbox.valueChanged.connect(self.get_printSpeed)
         # create spinbox object variable
         self.printSpeed_spinbox.setObjectName("printSpeed_spinbox")
         # Add range for print speed -----------
@@ -179,7 +180,7 @@ class Ui_MainWindow(object):
         # create QLineEdit
         self.inputfile_lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
         # add action to line edit when enter key is pressed
-        self.inputfile_lineEdit.returnPressed.connect(self.set_inputFile)
+        # self.inputfile_lineEdit.returnPressed.connect(self.set_inputFile)
         # create QLineEdit object variable
         self.inputfile_lineEdit.setObjectName("inputfile_lineEdit")
         # add QLineEdit to layout
@@ -196,7 +197,7 @@ class Ui_MainWindow(object):
         # create QLineEdit
         self.outputFile_lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
         # save output file
-        self.outputFile_lineEdit.returnPressed.connect(self.set_outputFile)
+        # self.outputFile_lineEdit.returnPressed.connect(self.set_outputFile)
         # create QLineEdit object variable
         self.outputFile_lineEdit.setObjectName("outputFile_lineEdit")
         # add QLineEdit to layout
